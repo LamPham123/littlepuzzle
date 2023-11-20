@@ -1,0 +1,22 @@
+<!-- templates/try_again.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle Game - Try Again</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="try-again-container">
+        <h2>Incorrect Answer! Try Again.</h2>
+        <form action="/puzzle/{{ question_number }}" method="post">
+            <label for="answer">Your Answer:</label>
+            <input type="text" id="answer" name="answer" required>
+            <button type="submit">Try Again</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle Game - Question {{ question_number }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="puzzle-container">
+        <h2>Level {{ question_number }}</h2>
+        <p class="question">{{ question | safe}}</p>
+        {% if image %}
+            <img class = image src="{{ url_for('static', filename=image) }}" alt="Puzzle Image">
+        {% endif %}
+        <form id="answer-form" action="/puzzle/{{ question_number }}" method="post">
+            <label for="answer">Your Answer:</label>
+            <input type="text" id="answer" name="answer" required>
+            <button type="submit">Submit Answer</button>
+        </form>
+        {% if prompt %}
+            <p class="prompt">{{ prompt }}</p>
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
